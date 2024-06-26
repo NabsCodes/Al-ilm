@@ -1,0 +1,259 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <div class="pt-5 pt-md-7 bg-gray-200" >
+                <div class="mx-3" style="margin: 0%; padding: 0;">
+                    <div class="row mt-4">
+                        <div class="col-md-2">
+                            <%- include('partials/admin-sidebar') %>
+                           
+                        </div>
+                        <div class="col-md-10">
+                            <div class="card mb-5">
+                                <div class="card-body">
+                                    <h4 class="card-title">Programs Records
+                                        <a href="/admin/programs/create-prg" >
+                                            <span class="icon icon-sm me-3 ">
+                                                <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Create New Programs" class="fas fa-plus-circle"></span>
+                                            </span>
+                                        </a> 
+                                    </h4>
+                                    <p class="card-description"> Search and Preview all Programs.</p>
+                                    <div class="table-responsive">
+                                    <table id="dataTableExample" class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Program</th>
+                                            <th>Status</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Supervisor</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <%for (i in programs) {%>
+                                            <tr>
+                                                <td>
+                                                   <a href="/admin/programs/edit-prg/<%=programs[i]._id%>" >
+                                                    <span data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="View Record">
+                                                    <%=programs[i].title%>
+                                                    </span>
+                                                </a> 
+                                                </td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td>$320,800</td>
+                                            </tr>
+                                        <%}%>
+                                    
+                                        </tbody>
+                                    </table>
+                                    </div>
+                                </div>
+                                </div>
+                           
+                        </div>
+                   </div>
+        
+                </div>
+           </div>
+              
+           <div class="modal fade" id="show-pupil" tabindex="-1" role="dialog" aria-labelledby="show-pupil" aria-hidden="true">
+            <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+        
+        
+                        
+                 
+                    
+                    <div class="modal-body text-center py-3 text-white">
+                        <span class="modal-icon display-1"><span class="fas fa-user"></span></span>
+                        <h3 class="modal-title mb-3">pupil's Record</h3>
+                        <a href="/admin/pupil/record/:id" class="small border-gray-300-gray">Show Full Record <span class="fas fa-expand"></span></a>
+                        
+        
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe-europe"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Language:</span>
+                                                <div class="text-white mt-2">English, French, German, Romanian</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-fill-drip"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Skills:</span>
+                                                <div class="text-white mt-2"><a href="#">UI,</a> <a href="#">UX,</a> <a href="#">Photoshop</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-code-branch"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Technologies:</span>
+                                                <div class="text-white mt-2"><a href="#">Angular,</a> <a href="#">VueJs,</a> <a href="#">React,</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-birthday-cake"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Birthday:</span>
+                                                <div class="text-white mt-2">May 3, 1990</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-briefcase"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Organizations:</span>
+                                                <div class="text-white mt-2"><a href="#">Crafty Dwarf LLC,</a> <a href="#">Flow UI LLC</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Online:</span>
+                                                <div class="text-white mt-2"><a href="#">Themesberg,</a> <a href="#">Dribbble</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <ul class="list-group list-group-transparent list-group-flush border-0 mb-0">
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="far fa-paper-plane"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Email:</span>
+                                                <div class="text-white mt-2"><a href="#">support@company.io</a></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-mobile-alt"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Phone number:</span>
+                                                <div class="text-white mt-2">+(123) 456 7890</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item rounded-0 py-4">
+                                        <div class="d-flex">
+                                            <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-map-pin"></span></span>
+                                            <div class="media-body d-block">
+                                                <span class="h5">Location:</span>
+                                                <div class="text-white mt-2">New York, USA</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer z-2 mx-auto text-center pb-5">
+                        <p class="text-danger">
+                            All Records are confidential.
+                            <br class="visible-md" />
+                           
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal  fade" id="add-pupil" tabindex="-1" role="dialog" aria-labelledby="add-pupil" aria-hidden="true">
+            <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+        
+        
+                        
+                 
+                    
+                    <div class="modal-body text-center py-3 text-white">
+                        <span class="modal-icon display-1"><span class="fas fa-user"></span></span>
+                        <h3 class="modal-title mb-3">Add New Pupil</h3>
+                        <p class="small">Fill in the info below and you'll be redirected to the profile</p>
+                        <form action="#" method="post" >
+                            <div class="card-body p-0 p-md-4">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="first_name">First Name</label> <input class="form-control" id="first_name" name="first_name"  type="text" placeholder="Enter first name" required="" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="last_name">Last Name</label> <input class="form-control" id="last_name" ame="last_name"  type="text" placeholder="Also last name" required="" /></div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="birthday">Birthday</label> <input type="text" class="form-control flatpickr-input" id="birthday" name="birthday"   data-toggle="date" placeholder="Select birth date" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gender">Gender</label>
+                                        <select class="form-select" name="gender" id="gender" aria-label="Default select example">
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="email">Email</label> <input class="form-control" id="email" name="email" type="email" placeholder="name@email.com" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="phone">Phone</label> <input class="form-control" id="phone" name="phone" type="number" placeholder="+234-800 000 0000" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2"><button type="submit" class="btn text-center btn-primary">Save</button></div>
+        
+                        </form>
+        
+                    </div>
+                    
+                </div>
+            </div>
+           
+           
+           
+        </div>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

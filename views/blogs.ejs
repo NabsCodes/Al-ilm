@@ -1,0 +1,112 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main>
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-primary text-white pb-10 pb-sm-8 pb-lg-11">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-8 text-center">
+                            <h1 class="display-2 mb-4">Our Blog</h1>
+                            
+                            <blockquote class="blockquote text-inherit text-center" style="background-color: rgba(28, 70, 17, 0.411);">
+                                We craft insightful blogs encompassing spiritual guidance, project updates, and milestone achievements to
+                                 keep our benefactors well-informed and engaged. These writings serve as a means to provide valuable 
+                                 insights into our initiatives and offer a deeper connection with the impactful work we collectively undertake.
+                            </blockquote>
+                        
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-lg line-bottom-light">
+                <div class="container mt-n10 mt-lg-n12 z-2">
+                    <div class="row">
+                        <%if (featureBlogs.length >= 1) {%>
+                            <div class="col-lg-12 mb-5">
+
+
+                                <div class="mx-auto">
+                                    <div id="Carousel3" class="carousel slide" data-ride="carousel">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#Carousel3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#Carousel3" data-bs-slide-to="1" aria-label="Slide 2"></button> <button type="button" data-bs-target="#Carousel3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <%for (i in activeBlogs) {%>
+                                                <div class="carousel-item active">
+                                                    <div class="card shadow bg-white border-gray-300 flex-lg-row align-items-center g-0 p-4">
+                                                        <a href="/blogs/23123" class="col-12 col-lg-6"><img src="/assets/img/blog/image-1.jpg" alt="themesberg office" class="card-img-top rounded" /></a>
+                                                        <div class="card-body d-flex flex-column justify-content-between col-auto py-4 p-0 p-lg-3 p-xl-5">
+                                                            <a href="/blogs/23123"><h2>Designing a dashboard that increases business value</h2></a>
+                                                            <p>
+                                                                Today we are overwhelmed by content, and inspiration can strike anywhere. The point is to collect it and share it in a structured way to inspire your team, client, and users. In this article, I will
+                                                                show you how to design a dashboard.
+                                                            </p>
+                                                            <div class="d-flex align-items-center mt-3">
+                                                                <img class="avatar avatar-sm rounded-circle" src="assets/img/team/profile-picture-1.jpg" alt="Richard avatar" />
+                                                                <h3 class="h6 small ms-2 mb-0">Richard Thomas</h3>
+                                                                <span class="h6 text-muted small fw-normal mb-0 ms-auto"><time datetime="2019-04-25">21 February, 2019</time></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                        
+                                                </div>
+                                           <% } %>
+                                        </div>
+                                        <a class="carousel-control-prev" href="#Carousel3" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                                        <a class="carousel-control-next" href="#Carousel3" role="button" data-bs-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span></a>
+                                    </div>
+                                </div>
+    
+    
+    
+                                
+                            </div>
+                        <%}%>
+                            <%for (i in activeBlogs) {%>
+                            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-5">
+                                <div >
+                                    <div class="mb-3">
+                                        
+                                    </div><div class="blog-card">
+                                        <div class="card shadow">
+                                            <a href="#"><img src="/assets/img/blog/image-1.jpg" class="card-img-top rounded-top" alt="Themesberg office"></a>
+                                            <div class="card-body">
+                                                <small class="d-block mb-2">January 20, 2019</small>
+                                                <h2 class="h5"><a href="#"><%=activeBlogs[i].title%></a></h2>
+                                                <p class="card-text my-2">According to some historical records, some people ...</p>
+                                            </div>
+                                            <div class="card-footer bg-white border-0 px-0 py-0">
+                                                <div class="d-grid">
+                                                    <a class="btn btn-sm btn-secondary rounded-0 rounded-bottom" href="/blogs/<%=activeBlogs[i]._id%>">
+                                                        <span class="fas fa-book-open me-1"></span> 
+                                                        Read More
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                      
+                    </div>
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

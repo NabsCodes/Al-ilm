@@ -1,0 +1,102 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">Blog Posts
+                                    <a href="/admin/blogs/add-blog" >
+                                        <span class="icon icon-sm me-3 ">
+                                            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Create New Post" class="fas fa-plus-circle"></span>
+                                        </span>
+                                    </a>
+                                </h3>
+                                <p class="card-description">Search all blog posts.</p>
+                                <div class="table-responsive">
+                                <table id="dataTableExample" class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Views</th>
+                                        <th>Likes</th>
+                                        <th>Dislikes</th>
+                                        <th>comments</th>
+                                        <th>Date</th>
+                                        <th>Published</th>
+
+
+                                     </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (i in blogs) {%>
+                                            <tr>
+                                                <td>
+                                                    <a href="/admin/blogs/blog/<%=blogs[i]._id%>">
+                                                        <%=blogs[i].title%>
+                                                    </a>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <%=blogs[i].views%>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <%=blogs[i].likes%>
+
+                                                </td>
+                                                <td>
+                                                    <%=blogs[i].dislikes%>
+
+                                                </td>
+                                                <td>                                                    
+                                                    <%=blogs[i].comments.length%>
+
+                                                </td>
+                                                <td>                                                    
+                                                    <%=blogs[i].formattedBlogDate%>
+
+                                                </td>
+                                                <td>                                                    
+                                                    <%=blogs[i].isActive%>
+
+                                                </td>
+                                            
+                                            </tr>
+                                        
+                                        <% } %>
+
+                                    
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                    
+                    </div>
+                   
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

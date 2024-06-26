@@ -1,0 +1,321 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-10 col-md-8">
+                        <div class="card">
+                            <form action="/admin/programs/edit-prg/<%=program1._id%>" method="post">
+                                <div class="card-body">
+                                    <h3 class="card-title">Create Program</h3>
+                                    <p class="card-description">Search all programs.</p>
+                                    <div class="row mb-5">
+                                        <div class="col-12 col-md-6">
+                                          <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" value="<%=program1.title%>" id="floatingInput" placeholder="<%=program1.title%>"> 
+                                              <label for="floatingInput">Title</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating">
+                                            <div class="mb-3">
+                                                <!-- <label for="formFile" class="form-label">Statement</label>  -->
+                                                <input class="form-control" type="file" id="formFile"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="mb-3"><label for="exampleFormControlTextarea1">Describe the Program</label> 
+                                            <textarea name="description" class="form-control" value="<%=program1.description%>" placeholder="<%=program1.description%>" id="exampleFormControlTextarea1" rows="8"></textarea>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="form-floating mt-3 mb-3">
+                                                <input type="text" name="goal" class="form-control" id="floatingInput" value="<%=program1.goal%>" placeholder="<%=program1.goal%>"> 
+                                                  <label for="floatingInput">Target Goal</label>
+                                              </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="mb-3"><span class="h6 fw-bold">Type of Program</span></div>
+    
+                                            <div class="row">
+                                                
+                                                <div class="col-lg-4 col-sm-12">
+                                                        
+                                                         <% if (types[0] === 'on'){%>
+                                                            <div class="form-check">
+                                                            
+                                                                <input class="form-check-input" type="checkbox" checked value="" id="defaultCheck2" />
+                                                                <label class="form-check-label" for="defaultCheck2">Fund Raise</label>
+                                                                </div>
+                                                            </div>
+                                                            <%}%>
+                                                            <% if (types[1] === 'on'){%>
+                                                                <div class="col-lg-4 col-sm-12">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" checked value="" id="defaultCheck1"/> 
+                                                                        <label class="form-check-label" for="defaultCheck1">Project</label>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            <% }  %>
+                                                            <%  if (types[2] === 'on'){%>
+                                                                <div class="col-lg-4 col-sm-12">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" checked id="defaultCheck2" />
+                                                                         <label class="form-check-label" for="defaultCheck2">Volunteer</label>
+                                                                        </div>
+                                                                </div>
+                                                            <%} %>
+                                                                
+                                                            <% if (types[0] === 'off'){%>
+                                                                <div class="form-check">
+                                                                
+                                                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                                                    <label class="form-check-label" for="defaultCheck2">Fund Raise</label>
+                                                                    </div>
+                                                                </div>
+                                                                <%}%>
+                                                                <% if (types[1] === 'off'){%>
+                                                                    <div class="col-lg-4 col-sm-12">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox"  value="" id="defaultCheck1"/> 
+                                                                            <label class="form-check-label" for="defaultCheck1">Project</label>
+                                                                        </div>
+                                                                        
+                                                                    </div>
+                                                                <% }  %>
+                                                                <%  if (types[2] === 'off'){%>
+                                                                    <div class="col-lg-4 col-sm-12">
+                                                                        <div class="form-check">
+                                                                            <input class="form-check-input" type="checkbox"  id="defaultCheck2" />
+                                                                             <label class="form-check-label" for="defaultCheck2">Volunteer</label>
+                                                                            </div>
+                                                                    </div>
+                                                                <%} %>
+                                                    
+                                                
+                                            </div>
+                                        </div>
+                                            
+                                            
+                                    </div>
+                                       
+                                    <div class="row my-4">
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                            <label class="h6" for="exampleInputDate3">Enable Direct Donations</label>
+                                            <div class="form-check form-switch">
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Allow Donations</label>
+                                                <%if (program1.isDonation === 'on') {%>
+                                                    <!-- <input class="form-check-input"  checked type="checkbox" id="flexSwitchCheckChecked1"  />  -->
+                                                    <input class="form-check-input"  name="isDonation" value="on" checked type="checkbox"  id="defaultCheck1"/>
+                                                    <%} else {%>
+                                                        <input class="form-check-input" name="isDonation" type="checkbox" id="flexSwitchCheckChecked1"  /> 
+        
+                                                    <%}%>
+                                            </div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                            <label class="h6" for="exampleInputDate3">Status</label>
+                                            <div class="form-check form-switch">
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Activate</label>
+                                                <%if (program1.isActive === 'on') {%>
+                                               
+                                                <input class="form-check-input" name="isActive"  checked  type="checkbox" checked id="isActive"  /> 
+                                               
+                                                <%} else {%>
+                                                <input class="form-check-input" unchecked name="isActive" type="checkbox" checked id="isActive"  /> 
+    
+                                                <%}%>
+                                            </div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-2">
+                                                <label class="h6" for="exampleInputDate3">Target Date</label>
+                                              <div class="input-group input-group-border">
+                                                <span class="input-group-text" id="basic-addonDate3">
+                                                  <span class="fas far fa-calendar-alt">
+                                                    </span>
+                                                </span>
+                                                <input class="form-control datepicker-input" name="targetDate" value="<%= program1.targetDate%>" data-datepicker="" id="exampleInputDate3" placeholder="<%= program1.targetDate%>" type="text">
+                                              </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center my-4">
+                                        <button class="btn btn-outline-primary text-center">Save</button>
+                                    </div>
+                                    
+                                    <div class="row">
+                                    <h3 class="card-title">Other Controls</h3>
+    
+                                        <div class="col-md-12 col-lg-12   justify-content-between">
+                                            <nav>
+                                                <div class="nav nav-tabs mb-4" id="nav-tab" role="tablist">
+                                                    <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Donations</a>
+                                                    <a class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Volunteers</a>
+                                                </div>
+                                            </nav>
+                                            <div class="tab-content" id="nav-tabContent">
+                                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                    <div class="table-responsive">
+                                                        <table id="dataTableExample" class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Program</th>
+                                                                <th>Status</th>
+                                                                <th>Age</th>
+                                                                <th>Start date</th>
+                                                                <th>Supervisor</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            
+                                                                <tr>
+                                                                    <td>
+                                                                       <a href="/admin/programs/edit-prg/programs[i]" >
+                                                                        <span data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="View Record">
+                                                                        NAme Here
+                                                                        </span>
+                                                                    </a> 
+                                                                    </td>
+                                                                    <td>System Architect</td>
+                                                                    <td>Edinburgh</td>
+                                                                    <td>61</td>
+                                                                    <td>2011/04/25</td>
+                                                                    <td>$320,800</td>
+                                                                </tr>
+                                                            
+                                                            <tr>
+                                                                <td>Garrett Winters</td>
+                                                                <td>Accountant</td>
+                                                                <td>Tokyo</td>
+                                                                <td>63</td>
+                                                                <td>2011/07/25</td>
+                                                                <td>$170,750</td>
+                                                            </tr>
+                                                            
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                    <div class="table-responsive">
+                                                        <table id="dataTableExample" class="table">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Program</th>
+                                                                <th>Status</th>
+                                                                <th>Age</th>
+                                                                <th>Start date</th>
+                                                                <th>Supervisor</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            
+                                                                <tr>
+                                                                    <td>
+                                                                       <a href="/admin/programs/edit-prg/programs[i]" >
+                                                                        <span data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="View Record">
+                                                                        NAme Here
+                                                                        </span>
+                                                                    </a> 
+                                                                    </td>
+                                                                    <td>System Architect</td>
+                                                                    <td>Edinburgh</td>
+                                                                    <td>61</td>
+                                                                    <td>2011/04/25</td>
+                                                                    <td>$320,800</td>
+                                                                </tr>
+                                                            
+                                                            <tr>
+                                                                <td>Garrett Winters</td>
+                                                                <td>Accountant</td>
+                                                                <td>Tokyo</td>
+                                                                <td>63</td>
+                                                                <td>2011/07/25</td>
+                                                                <td>$170,750</td>
+                                                            </tr>
+                                                          
+                                                            
+                                                            </tbody>
+                                                        </table>
+                                                        </div>
+                                                </div>
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    </div>
+                                </div>
+                            </form>
+                    
+                    </div>
+                    
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+              const isActiveCheckbox = document.getElementById('isActive');
+            
+              isActiveCheckbox.addEventListener('change', async () => {
+                try {
+                  const programId = 'your-program-id';  // Replace with your actual program ID
+                  const newStatus = !isActiveCheckbox.checked;
+            
+                  const response = await fetch(`https://localhost:3000/admin/programs/update-status/658987303513593f5d0e4011`, {
+                    method: 'get',
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ isActive: newStatus }),
+                  });
+            
+                  if (response.ok) {
+                    console.log('Program status updated successfully');
+                  } else {
+                    const data = await response.json();
+                    console.error('Error updating program status:', data.error);
+                  }
+                } catch (error) {
+                  console.error('Error updating program status:', error.message);
+                }
+              });
+            });
+            </script>
+            
+    
+        <%- include('partials/end') %>

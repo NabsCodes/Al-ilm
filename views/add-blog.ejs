@@ -1,0 +1,86 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-10 col-md-8">
+                        <div class="card">
+                            <form action="/admin/blogs/add-blog" method="post">
+                                <div class="card-body">
+                                    <h3 class="card-title">Create Post</h3>
+                                    <div class="row mb-5">
+                                        <div class="col-12 col-md-6">
+                                          <div class="form-floating mb-3">
+                                            <input name="title" type="text" class="form-control" id="floatingInput" placeholder="e.g. Food Drive"> 
+                                              <label for="floatingInput">Title</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating">
+                                            <div class="mb-3">
+                                                <!-- <label for="formFile" class="form-label">Statement</label>  -->
+                                                <input name="file" class="form-control" type="file" id="formFile"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row mb-5">
+                                        <div class="col-12 col-md-6">
+                                          <div class="form-floating mb-3">
+                                            <input name="author" type="text" class="form-control" id="floatingInput" value="Admin"> 
+                                              <label for="floatingInput">Author</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input name="e_readTime" type="number" class="form-control" id="floatingInput" placeholder="Estimated Read Time"> 
+                                                  <label for="floatingInput">Estimate Read Time</label>
+                                              </div>
+                                      </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="mb-3"><label for="exampleFormControlTextarea1">Blog Post</label> 
+                                            <textarea  class="form-control" name="blogPost" placeholder="Write post here..." id="exampleFormControlTextarea1" rows="8"></textarea>
+                                        </div>
+                                    </div>
+                                       
+                                  
+                                   
+                                    <div class="row text-center my-4">
+                                        <button type="submit" class="btn btn-outline-primary text-center">Save</button>
+                                    </div>
+                                    
+                                    
+                            </form>
+                            
+                            
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                    
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

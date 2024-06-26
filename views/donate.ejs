@@ -1,0 +1,204 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main>
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header pb-10 pb-lg-11 mb-4 mb-lg-6 bg-primary text-white">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 text-center mb-lg-1">
+                            <h1 class="display-2 font-weight-extreme mb-4">Donation</h1>
+
+                            <div class="d-flex flex-column flex-lg-row justify-content-center">
+                                <!-- <span class="h5 mb-3 mb-lg-0"><span class="fas fa-book"></span><span class="ms-3">Fi Sabilillah</span></span> -->
+                                <blockquote class="blockquote text-inherit text-center" style="background-color: rgba(28, 70, 17, 0.411);">
+
+                                    “Whatever of your wealth you spend, shall (first) be for your parents, and for the near of kin, and the orphans, 
+                                    and the needy, and the wayfarer; and whatever good you do, verily, God has full knowledge thereof.” 
+                                </blockquote>
+                                <!-- <span class="ms-lg-5 mb-3 mb-lg-0 h5"><span class="fas fa-user-tie"></span><span class="ms-3">Part Time</span></span> -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="pattern bottom"></div>
+            </section>
+            <section class="section section-lg pt-0">
+                <div class="container mt-n8 mt-lg-n11 z-2">
+                    <div class="card shadow p-3 mb-4">
+                        <nav>
+                            <div class="nav nav-pills nav-fill flex-column flex-sm-row" id="nav-tab-ecommerce" role="tablist">
+                                <a class="nav-item nav-link me-0 me-sm-4 me-md-3" id="nav-credit-card-tab" data-bs-toggle="tab" href="#nav-credit-card" role="tab" aria-controls="nav-credit-card" aria-selected="false">Credit Card </a>
+                                <a class="nav-item nav-link me-0 me-sm-4 me-md-3 active" id="nav-paypal-tab" data-bs-toggle="tab" href="#nav-paypal" role="tab" aria-controls="nav-paypal" aria-selected="true">Paystack </a>
+                                <a class="nav-item nav-link" id="nav-wire-tab" data-bs-toggle="tab" href="#nav-wire" role="tab" aria-controls="nav-wire" aria-selected="false">Bank Transfer</a>
+                            </div>
+                        </nav>
+                    </div>
+
+
+
+
+
+                    <div class="col-12 bt-grey-300">
+                        
+                        <div class="tab-content mt-2" id="nav-tabContent-ecommerce">
+                            
+                            <div class="tab-pane fade" id="nav-credit-card" role="tabpanel" aria-labelledby="nav-credit-card-tab">
+                               
+                                    <form action="#" method="post" class="card border-gray-300 p-3 mb-4">
+                                        <div class="card-body p-0 p-md-4">
+                                            <div class="row justify-content-center">
+                                                <div class="col-12">
+                                                    <div class="mb-4">
+                                                        <label class="form-label" for="cardNameLabel">Name <span class="small text-dark">(Full name as displayed on card)</span></label>
+                                                        <div class="input-group mb-4"><input class="form-control" id="cardNameLabel" placeholder="Name on Card *" type="text" required /></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="mb-4">
+                                                        <label class="form-label h6" for="cardNumberLabel">Card Number <span class="text-danger">*</span></label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><span class="fas fa-credit-card"></span></span>
+                                                            <input type="text" class="form-control" id="cardNumberLabel" placeholder="0000 0000 0000 0000" aria-label="Card number" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-4">
+                                                        <label class="form-label h6" for="cardCVCLabel">CVC <span class="text-danger">*</span></label> <input class="form-control" id="cardCVCLabel" placeholder="CVC" type="number" required />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="mb-4">
+                                                        <label class="form-label h6" for="cardExpiryLabel">Card Expiry <span class="text-danger">*</span></label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-text"><span class="fas fa-credit-card"></span></span>
+                                                            <input type="text" class="form-control" id="cardExpiryLabel" placeholder="MM / YY" aria-label="Card expiry" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 justify-content-center text-center"><button class="btn btn-primary btn-dark mt-2 text-center animate-up-2" type="submit">Donate</button></div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                
+                                
+                            </div>
+                            <div class="tab-pane fade active show" id="nav-paypal" role="tabpanel" aria-labelledby="nav-paypal-tab">
+                               
+                                <div class="card px-4 py-5">
+                                    <form action="/donate" method="post">
+                                        <div class="row justify-content-center">
+                                            <div class="col-6">
+                                                <div class="mb-4">
+                                                    <label for="cartInputName2">Full Name *</label> 
+                                                    <input type="text" name="d_name" class="form-control" placeholder="e.g. Abel Baker" id="cartInputName2" aria-describedby="cartInputName2" required="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-4">
+                                                    <label for="cartInputEmail2">Email *</label> 
+                                                    <input name="d_email" type="email" class="form-control" placeholder="example@email.com" id="cartInputEmail2" aria-describedby="cartInputName2" required="" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-6">
+                                                <div class="mb-4">
+                                                    <label for="cartInputName2">Amount *</label> 
+                                                    <input type="text" name="amount" class="form-control" placeholder="e.g. NGN 100" id="cartInputName2" aria-describedby="cartInputName2" required="" />
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-4">
+                                                    <label for="cartInputEmail2">Phone Number</label> 
+                                                    <input name="d_phone" type="text" class="form-control" placeholder="Phone Number" id="cartInputEmail2" aria-describedby="cartInputName2" required="" />
+                                                </div>
+                                            </div>
+                                            <input type="hidden" value="Paystack">
+                                            <div class="col-12 text-center">
+                                                <button type="submit" class="btn w-100 btn-dropbox"><span class="fab fa-paystack me-2"></span>Donate</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                   
+                                       
+                                  
+                               
+                            </div>
+                            <div class="tab-pane fade" id="nav-wire" role="tabpanel" aria-labelledby="nav-wire-tab">
+                                
+                                <div class="card py-5 px-4">
+                                    <div class="row justify-content-center">
+                                        <div class="card">
+                                            <div class="row">
+                                                <div class="col-md-4 text-center py-3">
+                                                    <h6>Access Bank Plc</h6>
+                                                    <div class="d-flex">
+                                                        <label for="">Acc. No: </label>
+                                                        <p class="px-2">07xxxxxxx</p>
+
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <label for="">Name: </label>
+                                                        <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-center py-3">
+                                                    <h6>Zenith Bank Plc</h6>
+                                                    <div class="d-flex">
+                                                        <label for="">Acc. No: </label>
+                                                        <p class="px-2"> 10xxxxxxx</p>
+
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <label for="">Name: </label>
+                                                        <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-center py-3">
+                                                    <h6>Jaiz Bank Plc</h6>
+                                                    <div class="d-flex">
+                                                        <label for="">Acc. No: </label>
+                                                        <p class="px-2" >84xxxxxxx</p>
+
+                                                    </div>
+                                                    <div class="d-flex ">
+                                                        <label for="">Name: </label>
+                                                        <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>         
+                                </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

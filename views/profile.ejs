@@ -1,0 +1,561 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<main>
+           
+    <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+       <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+           <!-- <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" /> -->
+           <!-- <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" /> -->
+           <!-- <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" /> -->
+           <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+           <!-- <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" /> -->
+           <!-- <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" /> -->
+           <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+           <!-- <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" /> -->
+           <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+           <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+           <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+           <!-- <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" /> -->
+       </svg>
+   </div>
+   <div class="section section-lg pt-5 pb-2  pt-md-7 bg-gray-200">
+      <div class="contaier">
+        <div class="p-0 my-5 m-0 mx-3">
+           <div class="row">
+               <div class="col-md-2">
+                    <%- include('partials/admin-sidebar') %>
+                   
+               </div>
+               <div class="col-lg-10">
+                   <div class="card card-body bg-white border-gray-300 mb-4">
+                       <div class="profile-thumbnail dashboard-avatar mx-lg-auto me-3 text-center">
+                           <img src="/assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Profile" />
+                        <h4><%= volunteer.f_name%> </h4>
+                        </div>
+
+                       <h2 class="h5 mb-4">General information</h2>
+                       <form action="/admin/volunteer/edit-prf/<%=volunteer._id%>" method="post">
+                           <div class="row">
+                               <div class="col-md-6 mb-3">
+                                   <div class="mb-3"><label for="f_name">First Name</label> 
+                                    <input class="form-control" value="<%= volunteer.f_name%>" id="f_name" name="f_name"  type="text" placeholder="Enter first name" required="" /></div>
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                   <div class="mb-3"><label for="s_name">Last Name</label> 
+                                    <input class="form-control" value="<%= volunteer.s_name%>" id="s_name" name="s_name"  type="text" placeholder="Also last name" required="" /></div>
+                               </div>
+                           </div>
+                           <div class="row align-items-center">
+                               <div class="col-md-6 mb-3">
+                                   <div class="mb-3"><label for="birthday">Birthday</label> 
+                                    <input type="text" class="form-control flatpickr-input" id="birthday" name="birthday"   data-toggle="date" placeholder="Not on record" /></div>
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                   <label for="gender">Gender</label>
+                                   <select class="form-select" name="gender" id="gender" aria-label="Default select example">
+                                        <option><%=volunteer.gender%></option>
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                   </select>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-md-6 mb-3">
+                                   <div class="mb-3"><label for="email">Email</label>
+                                     <input class="form-control" value="<%= volunteer.email%>" id="email" name="email" type="email" placeholder="name@email.com" /></div>
+                               </div>
+                               <div class="col-md-6 mb-3">
+                                   <div class="mb-3"><label for="phone">Phone</label> 
+                                    <input class="form-control" value="<%= volunteer.phone%>" id="phone" name="phone" type="number" placeholder="+234-800 000 0000" /></div>
+                               </div>
+                           </div>
+                           <h2 class="h5 my-4">Location</h2>
+                           <div class="row">
+                               <div class="col-sm-9 mb-3">
+                                   <div class="mb-3"><label for="address">Address</label> 
+                                    <input class="form-control" value="<%= volunteer.address.street%>" id="street" name="street" type="text" placeholder="Enter Street address" /></div>
+                               </div>
+                               <div class="col-sm-3 mb-3">
+                                   <div class="mb-3"><label for="number">Number</label> 
+                                    <input class="form-control" value="<%= volunteer.address.number%>" id="number" name="number" type="number" placeholder="No." /></div>
+                               </div>
+                           </div>
+                           <div class="row">
+                               <div class="col-sm-4 mb-3">
+                                   <div class="mb-3"><label for="city">City</label> 
+                                    <input class="form-control" value="<%= volunteer.address.city%>" id="city" name="city" type="text" placeholder="City" /></div>
+                               </div>
+                               <div class="col-sm-4 mb-3">
+                                   <div class="mb-3"><label for="city">Country</label> 
+                                    <input class="form-control" value="<%= volunteer.address.country%>" id="country" name="country" type="text" placeholder="Nigeria" /></div>
+
+                               </div>
+                               <div class="col-sm-4">
+                                   <div class="mb-3"><label for="zip">ZIP</label> 
+                                    <input class="form-control" value="<%= volunteer.address.zip%>" id="zip" name="zip" type="tel" placeholder="ZIP" /></div>
+                               </div>
+                           </div>
+                           
+
+
+
+                           <div class="p-3 mb-4">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <span class="fas fa-arrow-down me-2"></span> Show More
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFive" data-bs-parent="#accordionExample2" style="">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3">
+                                                    <label for="zip">Career</label> 
+                                                    <input class="form-control" name="profession" id="profession" type="text" value="<%=volunteer.profession%>" placeholder="career name..." />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="zip">Job Title</label> 
+                                                    <input class="form-control" name="j_title" id="j_title" type="text" value="<%=volunteer.j_title%>" placeholder="Job Title..." />
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="zip">Personal Statement</label> 
+                                                    <textarea name="self_statement" class="form-control" placeholder="<%=volunteer.self_statement%>" rows="4" spellcheck="false"></textarea>                                                       
+                                                </div>
+
+                                            </div>
+                                            <div class="col">
+                                                <div class="mb-5">
+                                                    <table class="table">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td scope="col" id="class"> <h4>Active Programs</h4></td>
+                                                                
+                                                            </tr>
+                                                            <!-- <% %> -->
+                                                            <tr>
+                                                                <td>Mentorship</td>
+                                                            
+                                                            </tr>
+                                                            <tr>
+                                                                
+                                                                <td headers="firstyear Cheetham females">Bake sale fund raiser</td>
+                                                            </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+
+                                            <!-- <% let contacts = volunteer.contacts%> -->
+                                            <% for (i in contacts) {%>
+                                                <div class="toast bg-secondary text-white show my-2" aria-live="assertive" aria-atomic="true">
+                                                    <div class="toast-header bg-dark text-premary">
+                                                        <span class="fab fa-red-cross"></span> <strong class="me-auto ms-2">Emergency Contact</strong> <small>Secondary</small> 
+                                                        <!-- <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button> -->
+                                                    </div>
+                                                    <div class="toast-body">
+                                                        <p><%= contacts[i].c_name %></p> 
+                                                        <p class=" small"><%= contacts[i].c_relation %></p>
+                                                     <p class="small"><%= contacts[i].c_contact %></p>
+ 
+                                                     </div>
+                                                </div>
+                                            <% } %>
+
+                                            </div>
+                                        </div>
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#add-card" >
+                                            <span class="fas fa-plus-circle me-2"></span> Add Contact
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+       
+                           
+                           <div class="mt-2"><button type="submit" class="btn btn-primary">Save All</button> </div>
+                       </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div>
+                   <!-- <div class="card card-body bg-white border-gray-300 mb-4">
+                       <h2 class="h5 mb-4">Select profile photo</h2>
+                       <div class="row align-items-center">
+                           <div class="col-lg-1 mb-2 mb-lg-0">
+                               <div class="avatar-lg"><img class="rounded-circle" src="../../assets/img/team/profile-picture-3.jpg" alt="change avatar" /></div>
+                           </div>
+                           <div class="col-lg-6 mb-3 mb-lg-0">
+                               <div class="h6 mb-0 ms-lg-3">Your avatar</div>
+                               <small class="text-gray ms-lg-3">JPG, GIF or PNG. Max size of 800K</small>
+                           </div>
+                           <div class="col-lg-5">
+                               <div class="mb-3"><label for="formFile" class="form-label">Default file input example</label> <input class="form-control" type="file" id="formFile" /></div>
+                           </div>
+                       </div>
+                   </div> -->
+                   <div class="card card-body bg-white border-gray-300">
+                       <h2 class="h5 mb-4"> User Account <span class="text-danger">Settings</span></h2>
+                       <ul class="list-group list-group-flush">
+                           <%if (!isLocked && isActive) {%>
+                            <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                                <div>
+                                    <h3 class="h6 mb-1">Lock User Account</h3>
+                                    <span class="small">This action disables user from accessing the platform.</span>
+                                    <span class="small text-info">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#show-activities">More</a>
+                                    </span>
+                                </div>
+                                    
+                                   <div class="form-check form-switch">
+                                       <input class="form-check-input" data-bs-toggle="modal" data-bs-target="#lock-confirm" type="checkbox" /> 
+                                       <label class="form-check-label" for="flexSwitchCheckNotifi2">
+    
+                                       </label>
+                                   </div>
+                               </li>
+                           <% } else if (!isLocked && !isActive) {%>
+                            <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                                <div>
+                                    <h3 class="h6 mb-1">Lock User Account</h3>
+                                    <span class="small">This action disables user from accessing the platform.</span>
+                                    <span class="small text-info">
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#show-activities">More</a>
+                                    </span>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <span class="small text-warning">Activate account first</span>
+                                 </div>
+                                   <div class="form-check form-switch">
+                                       <input class="form-check-input" disabled data-bs-toggle="modal" data-bs-target="#lock-confirm" type="checkbox" /> 
+                                       <label class="form-check-label" for="flexSwitchCheckNotifi2">
+    
+                                       </label>
+                                   </div>
+                               </li>
+                            <% } else {%>
+
+                            <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                                <div>
+                                    <h3 class="h6 mb-1 text-success">Unlock Volunteer Account</h3>
+                                    <span class="small">This action enables user's access to the platform.</span>
+                                    
+                                </div>
+                                    
+                                   <div class="form-check form-switch">
+                                       <input class="form-check-input" data-bs-toggle="modal" checked="checked" data-bs-target="#unlock-confirm" type="checkbox" /> 
+                                       <label class="form-check-label" for="flexSwitchCheckNotifi2">
+    
+                                       </label>
+                                   </div>
+                               </li>
+                            <% } %>
+                           
+                           <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                               <div> <h3 class="h6 mb-1">Active Program</h3>
+                                    <span class="small">This user is currently involved with one or more active programs 
+                                        
+                                    </span>
+                                </div>
+                               <div class="form-check form-switch "><input class="form-check-input text-tertiary" type="checkbox" id="flexSwitchCheckNotifi1" checked="checked" /> <label class="form-check-label" for="flexSwitchCheckNotifi1"></label></div>
+                           </li>
+                          
+                           <li class="list-group-item d-flex align-items-center justify-content-between ps-0 py-3">
+                               <%if (!isActive) {%>
+                                <div>
+                                    <h3 class="h6 mb-1">User Status</h3>
+                                    <span class="small">This verifies that user is approved by admin</span>
+                                </div>
+                                <div class="form-check form-switch">
+                                 <span class="small text-danger">Not Active</span>
+                                 </div>
+                                <div class="form-check form-switch">
+                                    
+                                        <input class="form-check-input"data-bs-toggle="modal" data-bs-target="#activate-account" type="checkbox" id="flexSwitchCheckNotifi3" /> <label class="form-check-label" for="flexSwitchCheckNotifi3"></label>
+                                 
+                                    <!-- <input class="form-check-input" type="checkbox" id="flexSwitchCheckNotifi3" /> <label class="form-check-label" for="flexSwitchCheckNotifi3"></label> -->
+                                </div>
+                               
+                             </div>
+                                <%} else {%>
+                                    <div>
+                                        <h3 class="h6 mb-1">User Status</h3>
+                                        <span class="small">This verifies that user is approved by admin</span>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                     <span class="small text-success">Active</span>
+                                     </div>
+                                    <div class="form-check form-switch">
+                                         <input class="form-check-input" disabled type="checkbox" id="flexSwitchCheckNotifi3" checked="checked" /> <label class="form-check-label" for="flexSwitchCheckNotifi3"></label>
+                                    </div>
+                                   
+                                 </div>
+                                <% } %>
+                           </li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+       </div>
+      </div>
+   </div>
+   
+
+
+
+       <div class="modal fade" id="show-activities" tabindex="-1" role="dialog" aria-labelledby="show-activities" aria-hidden="true">
+           <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+               <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                   <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                   <div class="modal-body text-center py-3 text-white">
+                       <span class="modal-icon display-1"><span class="fas fa-file"></span></span>
+                       <h3 class="modal-title mb-3">User Active Programs</h3>
+                       <p class="mb-4 lead">All programs user is currently involve with.</p>
+                       
+
+                       <div class="row">
+                           <div class="col-md-6 col-lg-4">
+                               <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe-europe"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Language:</span>
+                                               <div class="text-gray mt-2">English, French, German, Romanian</div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-fill-drip"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Skills:</span>
+                                               <div class="text-gray mt-2"><a href="#">UI,</a> <a href="#">UX,</a> <a href="#">Photoshop</a></div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-code-branch"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Technologies:</span>
+                                               <div class="text-gray mt-2"><a href="#">Angular,</a> <a href="#">VueJs,</a> <a href="#">React,</a></div>
+                                           </div>
+                                       </div>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="col-md-6 col-lg-4">
+                               <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-birthday-cake"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Birthday:</span>
+                                               <div class="text-gray mt-2">May 3, 1990</div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-briefcase"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Organizations:</span>
+                                               <div class="text-gray mt-2"><a href="#">Crafty Dwarf LLC,</a> <a href="#">Flow UI LLC</a></div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Online:</span>
+                                               <div class="text-gray mt-2"><a href="#">Themesberg,</a> <a href="#">Dribbble</a></div>
+                                           </div>
+                                       </div>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div class="col-md-6 col-lg-4">
+                               <ul class="list-group list-group-transparent list-group-flush border-0 mb-0">
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="far fa-paper-plane"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Email:</span>
+                                               <div class="text-gray mt-2"><a href="#">support@company.io</a></div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-mobile-alt"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Phone number:</span>
+                                               <div class="text-gray mt-2">+(123) 456 7890</div>
+                                           </div>
+                                       </div>
+                                   </li>
+                                   <li class="list-group-item rounded-0 py-4">
+                                       <div class="d-flex">
+                                           <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-map-pin"></span></span>
+                                           <div class="media-body d-block">
+                                               <span class="h5">Location:</span>
+                                               <div class="text-gray mt-2">New York, USA</div>
+                                           </div>
+                                       </div>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="modal-footer z-2 mx-auto text-center pb-5">
+                       <p class="text-white">
+                           We’ll never share your details with third parties.<br class="visible-md" />
+                          
+                       </p>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <!-- Lock User Confirmation -->
+       <!-- <div class="d-grid"><button type="button" class="btn btn-block btn-tertiary mb-3" data-bs-toggle="modal" data-bs-target="#modal-achievement">Achievement</button></div> -->
+       <div class="modal fade" id="lock-confirm" tabindex="-1" aria-labelledby="lock-confirm" style="display: none;" aria-hidden="true">
+           <div class="modal-dialog modal-tertiary text-white modal-dialog-centered" role="document">
+               <div class="modal-content">
+                   <div class="modal-header">You're about to restrict user access <button type="button" class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                   <div class="modal-body">
+                       <div class="py-2 px-5 text-center">
+                           <span class="modal-icon display-1-md"><span class="fas fa-lock"></span></span>
+                           <h2 class="h3 modal-title mb-3">Warning!</h2>
+                           <p class="mb-3">Completing this action will disable the users account.
+                               <br><strong>Are you sure? </strong>
+                           </p>
+                       </div>
+                       <div class="text-center">
+                        <%if (user) {%>
+                           <a type="button" href="/admin/control/lock-account/<%=user._id%>" class="btn btn-sm btn-outline-danger text-center text-white">Lock User</a>
+                            <% } else {%>
+                                <a type="button" href="" class="btn btn-sm btn-outline-danger text-center text-white">Lock User</a>
+                                <% } %>
+                       </div>
+                   </div>
+                   
+               </div>
+           </div>
+       </div>
+
+       <!-- Unlock user Account -->
+       <div class="modal fade" id="unlock-confirm" tabindex="-1" aria-labelledby="unlock-confirm" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-primary text-white modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">UnLock User Account <button type="button" class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body">
+                    <div class="py-2 px-5 text-center">
+                        <span class="modal-icon display-1-md"><span class="fas fa-unlock"></span></span>
+                        <h2 class="h3 modal-title mb-3">Warning!</h2>
+                        <p class="mb-3">Completing this action will enable the user;s account.
+                            <br><strong>Are you sure?</strong>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <%if (user) {%>
+                            <a type="button" href="/admin/control/lock-account/<%=user._id%>" class="btn btn-sm btn-outline-danger text-center text-white">Unlock User</a>
+                             <% } else {%>
+                                 <a type="button" href="" class="btn btn-sm btn-outline-danger text-center text-white">Unlock User</a>
+                                 <% } %>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Contact for user Account -->
+    <div class="modal fade" id="add-card" tabindex="-1" aria-labelledby="add-card" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-primary text-white modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">Add a contact card <button type="button" class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <form action="/admin/volunteers/add-contact/<%=volunteer._id%>" method="post">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <div class="mb-3"><label for="c_name">Name</label> 
+                                 <input class="form-control" id="city" name="c_name" type="text" placeholder="e.g. Amina Smith" /></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 mb-3">
+                                <div class="mb-3"><label for="c_relation">Relationship</label> 
+                                 <input class="form-control"  id="country" name="c_relation" type="text" placeholder="e.g. Brother" /></div>
+    
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="mb-3"><label for="c_contact">Contact</label> 
+                                     <input class="form-control"  id="zip" name="c_contact" type="tel" placeholder="Email or Phone" /></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-4">
+                                    <label class="my-1 me-2" for="cartFormCustomSelectPref1">Type</label>
+                                    <select name="c_type" class="form-select my-1 me-sm-2" id="cartFormCustomSelectPref1">
+                                        <option selected="selected">Choose...</option>
+                                        <option value="Primary Number">Primary Number</option>
+                                        <option value="Secondary Number">Secondary Number</option>
+                                        <option value="Emergency Contact">Emergency</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-sm my-2 btn-outline-success text-center text-white">Save</button>
+    
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+     <!-- Activate user Account -->
+     <div class="modal fade" id="activate-account" tabindex="-1" aria-labelledby="activate-account" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-success text-white modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">Activate User Account <button type="button" class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                <div class="modal-body">
+                    <div class="py-2 px-5 text-center">
+                        <span class="modal-icon display-1-md"><span class="fas fa-check-circle"></span></span>
+                        <h2 class="h3 modal-title mb-3">Activate</h2>
+                        <p class="mb-3">Completing this action creates user credentials and gives access to the platform.
+                            <br><strong>Are you sure?</strong>
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        <a type="button" href="/admin/control/create/user-account/<%=volunteer._id%>" class="btn btn-sm btn-outline-primary text-center text-white">Activate User</a>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+       <!-- show more of user info -->
+       
+</main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

@@ -1,0 +1,82 @@
+<header class="header-global">
+  <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark navbar-theme-secondary headroom--not-bottom headroom--not-top headroom--unpinned">
+    <div class="container position-relative">
+      <a class="navbar-brand me-lg-6" href="/">
+        <img class="navbar-brand-dark pb-3 text-secondary" src="/assets/img/al-ilm.png" alt="Logo light" /> <img class="navbar-brand-light" src="assets/img/brand/dark.svg" alt="Logo dark" />
+      </a>
+      <div class="navbar-collapse collapse me-auto" id="navbar_global">
+        <div class="nav-wrapper position-relative">
+          <ul class="nav flex-column flex-sm-row">
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0 active" href="/">Home</a></li>
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/about">About</a></li>
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/causes">Programs</a></li>
+            <!-- <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0"  href="/events">Events</a></li> -->
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/blogs">Blog</a></li>
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/donate">Donate</a></li>
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/volunteer">Volunteer</a></li>
+            <li class="nav-item"><a class="nav-link mb-sm-3 mb-md-0" href="/contact">Contact</a></li>
+
+
+
+
+          </ul>
+        </div>
+        </ul>
+
+
+      </div>
+      <div class="d-flex align-items-center">
+        <a class="nav-link " type="button" data-bs-toggle="modal" data-bs-target="#signin-form">
+          <span class="nav-link-icon d-block ml-5"><span class="far fa-user"></span></span>
+        </a>
+        <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+</header>
+
+<div class="modal fade" id="signin-form" tabindex="-1" aria-labelledby="modal-form" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded">
+      <div class="modal-body p-0">
+        <div class="card border-gray-300 p-4">
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div class="card-header border-0 bg-white text-center pb-0">
+            <h2 class="h4">Sign in to our platform</h2>
+            <span>Login here using your email and password</span>
+          </div>
+          <div class="card-body p-0 p-md-4">
+            <form action="/login" method="post" class="mt-4">
+              <div class="form-group mb-4">
+                <label for="exampleInputEmailModal">Your Email</label>
+                <div class="input-group">
+                  <span class="input-group-text" id="basic-addon1"><span class="fas fa-envelope"></span></span>
+                  <input type="email" name="email" class="form-control" placeholder="example@mail.com" id="exampleInputEmailModal" aria-describedby="exampleInputEmailModal" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-group mb-4">
+                  <label for="exampleInputPasswordModal1">Your Password</label>
+                  <div class="input-group">
+                    <span class="input-group-text" id="basic-addon2"><span class="fas fa-unlock-alt"></span></span>
+                    <input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputPasswordModal1" aria-describedby="exampleInputPasswordModal1" />
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="form-check"><input class="form-check-input" type="checkbox" value="" id="defaultCheck55" /> <label class="form-check-label mb-0" for="defaultCheck55">Remember me</label></div>
+                  <div><a href="#" class="small text-right">Lost password?</a></div>
+                </div>
+              </div>
+              <div class="d-grid"><button type="submit" class="btn btn-primary">Sign in</button></div>
+            </form>
+
+            <p class="mt-4 text-center">Not registered? <a href="#" class="fw-bold text-underline">Contact Admin</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

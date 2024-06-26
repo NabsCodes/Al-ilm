@@ -1,0 +1,297 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                        
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row pt-5 pt-md-0">
+                            <div class="col-12 col-md-4 ">
+                                <div class="card border-gray-300">
+                                    <div class="card-body d-block d-md-flex align-items-center">
+                                        <div class="icon icon-shape icon-md icon-shape-primary rounded-circle me-3 mb-4 mb-md-0"><span class="fas fa-wallet"></span></div>
+                                        <div>
+                                            <span class="d-block h6 fw-normal">Funds Raised</span>
+                                            <h5 class="h3 fw-bold mb-1">$25,370.00</h5>
+                                            <div class="d-grid small mt-2"><a class="text-center mt-3" data-bs-toggle="modal" data-bs-target="#show-funds">
+                                                <span class="icon icon-xs ms-auto"><span class="fas fa-chevron-down mx-2 "></span></span>See Details</a></div>
+                                                <div class="modal fade" id="show-funds" tabindex="-1" role="dialog" aria-labelledby="show-funds" aria-hidden="true">
+                                                    <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                                                        <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                                                            <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                                                            <div class="modal-body text-center py-3 text-white">
+                                                                <span class="modal-icon display-1"><span class="fas fa-wallet"></span></span>
+                                                                <h3 class="modal-title mb-3">Money Raised</h3>
+                                                                <p class="mb-4 lead">Get exclusive access to freebies, premium products and news.</p>
+                                                                <table class="table table-hover text-white">
+                                                                    <tr>
+                                                                        <th scope="col" id="class3">Project</th>
+                                                                        <th scope="col" id="teacher3">Donor</th>
+                                                                        <th scope="col" id="males3">Email</th>
+                                                                        <th scope="col" id="females3">Donation</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row" id="firstyear3" rowspan="2">First Year</th>
+                                                                        <th scope="row" id="Bolter3" headers="firstyear3 teacher3">D. Bolter</th>
+                                                                        <td headers="firstyear3 Bolter3 males3">5</td>
+                                                                        <td headers="firstyear3 Bolter3 females3">4</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row" id="Cheetham3" headers="firstyear3 teacher3">A. Cheetham</th>
+                                                                        <td headers="firstyear3 Cheetham3 males3">7</td>
+                                                                        <td headers="firstyear3 Cheetham3 females3">9</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row" id="secondyear3" rowspan="3">Second Year</th>
+                                                                        <th scope="row" id="Lam3" headers="secondyear3 teacher3">M. Lam</th>
+                                                                        <td headers="secondyear3 Lam3 males3">3</td>
+                                                                        <td headers="secondyear3 Lam3 females3">9</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row" id="Crossy3" headers="secondyear3 teacher3">S. Crossy</th>
+                                                                        <td headers="secondyear3 Crossy3 males3">4</td>
+                                                                        <td headers="secondyear3 Crossy3 females3">3</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th scope="row" id="Forsyth3" headers="secondyear3 teacher3">A. Forsyth</th>
+                                                                        <td headers="secondyear3 Forsyth3 males3">6</td>
+                                                                        <td headers="secondyear3 Forsyth3 females3">9</td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer z-2 mx-auto text-center pb-5">
+                                                                <p class="text-white">
+                                                                    We’ll never share your details with third parties.<br class="visible-md" />
+                                                                    View our <a href="#">Privacy Policy</a> for more info.
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 ">
+                                <div class="card border-gray-300 ">
+                                    <div class="card-body d-block d-md-flex align-items-center">
+                                        <div class="icon icon-shape icon-md icon-shape-primary rounded-circle me-3 mb-4 mb-md-0"><span class="fas fa-file-invoice-dollar"></span></div>
+                                        <div>
+                                            <span class="d-block h6 fw-normal">Donations</span>
+                                            <h5 class="h3 fw-bold mb-1">$5,220.00</h5>
+                                            <div class="d-grid small mt-2"><a class="text-center mt-3" data-bs-toggle="modal" data-bs-target="#Show-top-donors">
+                                                <span class="icon icon-xs ms-auto"><span class="fas fa-chevron-down mx-2 "></span></span>See Details</a></div>
+                                            <div class="modal fade" id="Show-top-donors" tabindex="-1" role="dialog" aria-labelledby="Show-top-donors" aria-hidden="true">
+                                                <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                                                    <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                                                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                                                        <div class="modal-body text-center py-3 text-white">
+                                                            <span class="modal-icon display-1"><span class="fas fa-file-invoice-dollar"></span></span>
+                                                            <h3 class="modal-title mb-3">Donors Table</h3>
+                                                            <p class="mb-4 lead">Get exclusive access to freebies, premium products and news.</p>
+                                                            <table class="table table-hover text-white">
+                                                                <tr>
+                                                                    <th scope="col" id="class3">Project</th>
+                                                                    <th scope="col" id="teacher3">Donor</th>
+                                                                    <th scope="col" id="males3">Email</th>
+                                                                    <th scope="col" id="females3">Donation</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="firstyear3" rowspan="2">First Year</th>
+                                                                    <th scope="row" id="Bolter3" headers="firstyear3 teacher3">D. Bolter</th>
+                                                                    <td headers="firstyear3 Bolter3 males3">5</td>
+                                                                    <td headers="firstyear3 Bolter3 females3">4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Cheetham3" headers="firstyear3 teacher3">A. Cheetham</th>
+                                                                    <td headers="firstyear3 Cheetham3 males3">7</td>
+                                                                    <td headers="firstyear3 Cheetham3 females3">9</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="secondyear3" rowspan="3">Second Year</th>
+                                                                    <th scope="row" id="Lam3" headers="secondyear3 teacher3">M. Lam</th>
+                                                                    <td headers="secondyear3 Lam3 males3">3</td>
+                                                                    <td headers="secondyear3 Lam3 females3">9</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Crossy3" headers="secondyear3 teacher3">S. Crossy</th>
+                                                                    <td headers="secondyear3 Crossy3 males3">4</td>
+                                                                    <td headers="secondyear3 Crossy3 females3">3</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Forsyth3" headers="secondyear3 teacher3">A. Forsyth</th>
+                                                                    <td headers="secondyear3 Forsyth3 males3">6</td>
+                                                                    <td headers="secondyear3 Forsyth3 females3">9</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer z-2 mx-auto text-center pb-5">
+                                                            <p class="text-white">
+                                                                We’ll never share your details with third parties.<br class="visible-md" />
+                                                                View our <a href="#">Privacy Policy</a> for more info.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4 ">
+                                <div class="card border-gray-300">
+                                    <div class="card-body d-block d-md-flex align-items-center">
+                                        <div class="icon icon-shape icon-md icon-shape-primary rounded-circle me-3 mb-4 mb-md-0"><span class="fas fa-users"></span></div>
+                                        <div>
+                                            <span class="d-block h6 fw-normal">Volunteers</span>
+                                            <h5 class="h3 fw-bold mb-1">120</h5>
+                                            <div class="d-grid small mt-2"><a class="text-center mt-3" data-bs-toggle="modal" data-bs-target="#Show-volunteers">
+                                                <span class="icon icon-xs ms-auto"><span class="fas fa-chevron-down mx-2 "></span></span>See Details</a></div>
+                                            <div class="modal fade" id="Show-volunteers" tabindex="-1" role="dialog" aria-labelledby="Show-volunteers" aria-hidden="true">
+                                                <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                                                    <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                                                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                                                        <div class="modal-body text-center py-3 text-white">
+                                                            <span class="modal-icon display-1"><span class="fas fa-users"></span></span>
+                                                            <h3 class="modal-title mb-3">Volunteers Table</h3>
+                                                            <p class="mb-4 lead">Get exclusive access to freebies, premium products and news.</p>
+                                                            <table class="table table-hover text-white">
+                                                                <tr>
+                                                                    <th scope="col" id="class3">Project</th>
+                                                                    <th scope="col" id="teacher3">Donor</th>
+                                                                    <th scope="col" id="males3">Email</th>
+                                                                    <th scope="col" id="females3">Donation</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="firstyear3" rowspan="2">First Year</th>
+                                                                    <th scope="row" id="Bolter3" headers="firstyear3 teacher3">D. Bolter</th>
+                                                                    <td headers="firstyear3 Bolter3 males3">5</td>
+                                                                    <td headers="firstyear3 Bolter3 females3">4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Cheetham3" headers="firstyear3 teacher3">A. Cheetham</th>
+                                                                    <td headers="firstyear3 Cheetham3 males3">7</td>
+                                                                    <td headers="firstyear3 Cheetham3 females3">9</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="secondyear3" rowspan="3">Second Year</th>
+                                                                    <th scope="row" id="Lam3" headers="secondyear3 teacher3">M. Lam</th>
+                                                                    <td headers="secondyear3 Lam3 males3">3</td>
+                                                                    <td headers="secondyear3 Lam3 females3">9</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Crossy3" headers="secondyear3 teacher3">S. Crossy</th>
+                                                                    <td headers="secondyear3 Crossy3 males3">4</td>
+                                                                    <td headers="secondyear3 Crossy3 females3">3</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row" id="Forsyth3" headers="secondyear3 teacher3">A. Forsyth</th>
+                                                                    <td headers="secondyear3 Forsyth3 males3">6</td>
+                                                                    <td headers="secondyear3 Forsyth3 females3">9</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer z-2 mx-auto text-center pb-5">
+                                                            <p class="text-white">
+                                                                We’ll never share your details with third parties.<br class="visible-md" />
+                                                                View our <a href="#">Privacy Policy</a> for more info.
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="row my-3">
+                         
+                            <div class="col-12 col-lg-4 mb-18"  style="height: 25rem;">
+                                <div class="card border-gray-300 " >
+                                    <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom">
+                                        <div class="d-block">
+                                            <div class="h6 fw-normal text-gray mb-2">Volunteers</div>
+                                            <h2 class="h3">452</h2>
+                                            <!-- <div class="small mt-2"><span class="fas fa-angle-up text-success"></span> <span class="text-success fw-bold">18.2%</span></div> -->
+                                        </div>
+                                        <div class="d-block ms-auto">
+                                            <div class="d-flex align-items-center text-right mb-2"><span class="shape-xs rounded-circle bg-dark me-2"></span> <span class="fw-normal small">Approved</span></div>
+                                            <div class="d-flex align-items-center text-right"><span class="shape-xs rounded-circle bg-tertiary me-2"></span> <span class="fw-normal small">Pending</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-2 ">
+                                        <div class="ct-chart-5 ct-golden-section ct-series-e">
+                                            <div class="chartist-tooltip"></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4  "  style="height: 25rem;">
+                                <div class="card border-gray-300 mb-sm-10">
+                                    <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom">
+                                        <div class="d-block">
+                                            <div class="h6 fw-normal text-gray mb-2">Donations</div>
+                                            <h2 class="h3">10,567</h2>
+                                        </div>
+                                        <div class="d-block ms-auto">
+                                            <div class="d-flex align-items-center text-right mb-2"><span class="shape-xs rounded-circle bg-dark me-2"></span> <span class="fw-normal small">Project 1</span></div>
+                                            <div class="d-flex align-items-center text-right mb-2"><span class="shape-xs rounded-circle bg-tertiary me-2"></span> <span class="fw-normal small">Donations</span></div>
+                                            <div class="d-flex align-items-center text-right mb-2"><span class="shape-xs rounded-circle bg-primary me-2"></span> <span class="fw-normal small">Project 2</span></div>
+                                            <div class="d-flex align-items-center text-right"><span class="shape-xs rounded-circle bg-success me-2"></span> <span class="fw-normal small">Project 3</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-2">
+                                        <div class="ct-chart-7 ct-golden-section ct-series-e">
+                                            <!-- <div class="chartist-tooltip" style="top: 23.8438px; left: 211px;"><span class="chartist-tooltip-value">30</span></div> -->
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4 " style="min-height: 25rem;">
+                                <div class="card border-gray-300 ">
+                                    <div class="card-body d-flex flex-row align-items-center flex-0 border-bottom">
+                                        <div class="d-block">
+                                            <div class="h6 fw-normal text-gray mb-2">Net Funds</div>
+                                            <h2 class="h3">100,567</h2>
+                                        </div>
+                                    </div>
+                                    <div class="card-body p-2">
+                                        <div class="ct-chart-8 ct-major-tenth ct-series-b">
+                                            <div class="chartist-tooltip" style="top: 192.391px; left: -23.8281px;"></div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

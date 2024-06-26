@@ -1,0 +1,181 @@
+<%- include('partials/head') %> <%- include('partials/nav') %>
+<main class="bg-primary">
+	<div class="preloader bg-dark flex-column justify-content-center align-items-center">
+		<svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+			<path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+			<rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+			<rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+			<path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+			<rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+			<path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+			<rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+			<rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+			<rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+			<path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+			<rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+			<rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+		</svg>
+	</div>
+	<div class="pt-5 pt-md-7 bg-gray-200">
+		<div class="mx-3" style="margin: 0%; padding: 0">
+			<div class="row mt-4">
+				<div class="col-md-2"><%- include('partials/admin-sidebar') %></div>
+				<div class="col-md-10">
+					<div class="card mb-5">
+						<div class="card-body">
+							<h4 class="card-title">
+								Pupil Records
+								<a href="" data-bs-toggle="modal" data-bs-target="#add-pupil">
+									<span class="icon icon-sm me-3">
+										<span data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Register New Volunteer" class="fas fa-plus-circle"></span>
+									</span>
+								</a>
+							</h4>
+							<p class="card-description">Search and Preview all Defendants.</p>
+							<div class="table-responsive">
+								<table id="dataTableExample" class="table">
+									<thead>
+										<tr>
+											<th>Name</th>
+											<th>D.o.B</th>
+											<th>Status</th>
+											<th>School</th>
+											<th>Registered Date</th>
+											<th>Supervisor</th>
+										</tr>
+									</thead>
+									<tbody>
+										<%for (i in pupils) {%>
+										<tr>
+											<td>
+												<a href="" data-bs-toggle="modal" data-bs-target="#show-pupil">
+													<span data-bs-toggle="tooltip" data-bs-placement="right" title="" data-bs-original-title="View Record"> <%= pupils[i].f_name%> <%= pupils[i].s_name%> </span>
+												</a>
+											</td>
+											<td><%= pupils[i].formattedDOB%></td>
+											<td>Active</td>
+											<td><%= pupils[i].school.name%></td>
+											<td><%= pupils[i].formattedDateRegistered%></td>
+											<td><%= pupils[i].supervisor%></td>
+										</tr>
+										<!-- ********* Show People Record -->
+										<div class="modal fade" id="show-pupil" tabindex="-1" role="dialog" aria-labelledby="show-pupil" aria-hidden="true">
+											<div class="modal-dialog modal-tertiary modal-dialog-centered modal-md" role="document">
+												<div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+													<div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+
+													<div class="modal-body text-center py-3 text-white">
+														<span class="modal-icon display-1"><span class="fas fa-user"></span></span>
+														<h3 class="modal-title mb-3">Pupil's Record</h3>
+														<a href="/admin/pupil/record/<%= pupils[i]._id%>" class="small border-gray-300-gray">Show Full Record <span class="fas fa-expand"></span></a>
+													</div>
+													<div class="row my-3 px-5">
+														<div class="col">
+															<span class="h5 text-white">First Name:</span>
+															<div class="text-white mt-2"><%= pupils[i].f_name%></div>
+														</div>
+														<div class="col">
+															<div class="media-body d-block">
+																<span class="h5 text-white">Last Name:</span>
+																<div class="text-white mt-2"><%= pupils[i].s_name%></div>
+															</div>
+														</div>
+													</div>
+													<div class="row my-3 px-5">
+														<div class="col">
+															<span class="h5 text-white">Date of Birth:</span>
+															<div class="text-white mt-2"><%= pupils[i].formattedDOB%></div>
+														</div>
+														<div class="col">
+															<div class="media-body d-block">
+																<span class="h5 text-white">Status:</span>
+																<div class="text-white mt-2"><%= pupils[i].status%></div>
+															</div>
+														</div>
+													</div>
+													<div class="row my-3 px-5">
+														<div class="col">
+															<span class="h5 text-white">Email:</span>
+															<div class="text-white mt-2"><%= pupils[i].email%></div>
+														</div>
+														<div class="col">
+															<div class="media-body d-block">
+																<span class="h5 text-white">Phone Number:</span>
+																<div class="text-white mt-2"><%= pupils[i].phone%></div>
+															</div>
+														</div>
+													</div>
+													<div class="modal-footer z-2 mx-auto text-center pb-5">
+														<p class="text-danger">
+															All Records are confidential.
+															<br class="visible-md" />
+														</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- End of Show Record Detail -->
+										<%}%>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Add Pupil Record -->
+	<div class="modal fade" id="add-pupil" tabindex="-1" role="dialog" aria-labelledby="add-pupil" aria-hidden="true">
+		<div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+				<div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+
+				<div class="modal-body text-center py-3 text-white">
+					<span class="modal-icon display-1"><span class="fas fa-user"></span></span>
+					<h3 class="modal-title mb-3">Add New Pupil</h3>
+					<p class="small">Fill in the info below and you'll be redirected to the profile</p>
+					<form action="/admin/pupil/record/add" method="post">
+						<div class="card-body p-0 p-md-4">
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="mb-3"><label for="f_name">First Name</label> <input class="form-control" id="f_name" name="f_name" type="text" placeholder="Enter first name" required="" /></div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<div class="mb-3"><label for="s_name">Last Name</label> <input class="form-control" id="s_name" name="s_name" type="text" placeholder="Also last name" required="" /></div>
+								</div>
+							</div>
+							<div class="row align-items-center">
+								<div class="col-md-6 mb-3">
+									<div class="mb-3">
+										<label for="birthday">Birthday</label>
+										<!-- <input type="text" class="form-control flatpickr-input" id="birthday" name="dob"   data-toggle="date" placeholder="Select birth date" /> -->
+										<input name="dob" class="form-control datepicker-input" data-datepicker="" id="exampleInputDate3" placeholder="Select Birth Date" type="text" />
+									</div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<label for="gender">Gender</label>
+									<select class="form-select" name="gender" id="gender" aria-label="Default select example">
+										<option>Female</option>
+										<option>Male</option>
+									</select>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 mb-3">
+									<div class="mb-3"><label for="email">Email</label> <input class="form-control" id="email" name="email" type="text" placeholder="name@email.com" /></div>
+								</div>
+								<div class="col-md-6 mb-3">
+									<div class="mb-3"><label for="phone">Phone</label> <input class="form-control" id="phone" name="phone" type="text" placeholder="+234-800 000 0000" /></div>
+								</div>
+							</div>
+						</div>
+						<div class="mt-2"><button type="submit" class="btn text-center btn-primary">Save</button></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<%- include('partials/footer') %> <%- include('partials/end') %>

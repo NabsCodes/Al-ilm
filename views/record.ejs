@@ -1,0 +1,548 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="card card-body bg-white border-gray-300 mb-4">
+                            <div class="profile-thumbnail dashboard-avatar mx-lg-auto me-3 text-center">
+                                <img src="/assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Profile" />
+                            </div>
+                            <div class="row d-flex text-center">
+                                <h3 class="text-center"><%= pupil.f_name%> <%= pupil.s_name%></h3>
+                            </div>
+
+                            <h2 class="h5 mb-4">General information  pupil
+                                <a href="" data-bs-toggle="modal" data-bs-target="#add-info">
+                                 <span class="icon icon-sm me-3"><span class="fas fa-edit"></span></span>
+                                </a> 
+                                
+                             </h2>
+                            <form action="/admin/pupil/update/record/<%=pupil._id%>" method="post">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="first_name">First Name</label> <input value="<%= pupil.f_name%>" class="form-control" id="first_name" name="f_name"  type="text" placeholder="Enter first name" required="" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="last_name">Last Name</label> <input value="<%= pupil.s_name%>" class="form-control" id="last_name" name="s_name"  type="text" placeholder="Also last name" required="" /></div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="birthday">Birthday</label> <input type="text" value="<%= pupil.formattedDOB%>" class="form-control flatpickr-input" id="birthday" name="birthday"   data-toggle="date" placeholder="Select birth date" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="gender">Gender</label>
+                                        <select class="form-select" name="gender" id="gender" aria-label="Default select example">
+                                            <option value="<%= pupil.gender%>"><%= pupil.gender%></option>
+                                            <option value="Female">Female</option>
+                                            <option value="Male">Male</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="email">Email</label> <input value="<%= pupil.email%>" class="form-control" id="email" name="email" type="email" placeholder="name@email.com" /></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="mb-3"><label for="phone">Phone</label> <input value="<%= pupil.phone%>" class="form-control" id="phone" name="phone" type="number" placeholder="+234-800 000 0000" /></div>
+                                    </div>
+                                </div>
+                                <h2 class="h5 my-4">Location</h2>
+                                <div class="row">
+                                    <div class="col-sm-9 mb-3">
+                                        <div class="mb-3"><label for="address">Address</label> <input value="<%=pupil.address.street%>" class="form-control" id="address" name="address.street" type="text" placeholder="Enter address" /></div>
+                                    </div>
+                                    <div class="col-sm-3 mb-3">
+                                        <div class="mb-3"><label for="number">Number</label> <input value="<%=pupil.address.number%>" class="form-control" id="number" name="address.number" type="number" placeholder="No." /></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-4 mb-3">
+                                        <div class="mb-3"><label for="city">City</label> <input class="form-control" id="city" value="<%=pupil.address.city%>" name="address.city" type="text" placeholder="City" /></div>
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <div class="mb-3"><label for="city">Country</label> <input class="form-control" id="country" value="<%=pupil.address.country%>" name="address.country" type="text" placeholder="Nigeria" /></div>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="mb-3"><label for="zip">ZIP</label> <input class="form-control" id="zip" type="tel" value="<%=pupil.address.zip%>" name="address.zip" placeholder="ZIP" /></div>
+                                    </div>
+                                </div>
+                                
+
+
+
+                                <div class="p-3 mb-4">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFive">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                <span class="fas fa-arrow-down me-2"></span> Show More
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFive" data-bs-parent="#accordionExample2" style="">
+                                            <div class="accordion-body">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label for="zip">Guardian Name</label> 
+                                                            <input class="form-control" id="g_name" name="guardian.name" value="<%=pupil.guardian.name%>" type="text" placeholder="Guardian's name..." />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="zip">Phone Number</label> 
+                                                            <input class="form-control" id="g_phone" name="guardian.phone"  value="<%=pupil.guardian.phone%>" type="text" placeholder="Guardian's phone number..." />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="address">address</label>  
+                                                            <textarea class="form-control" name="guardian.address"  value="<%=pupil.guardian.address%>"
+                                                            placeholder="<%=pupil.guardian.address%>" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>                                                       
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label for="zip">Name <span class="small">Next of Kin</span></label> 
+                                                            <input class="form-control" id="nok_name" type="text" value="<%=pupil.nok.name%>"  name="nok.name" placeholder="NoK's name..." />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="zip">Phone Number</label> 
+                                                            <input class="form-control" id="nok_phone" value="<%=pupil.nok.phone%>"  name="nok.phone" type="text" placeholder="NoK's phone number..." />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="zip">address</label> 
+                                                            <textarea name="nok.address" class="form-control" value="<%=pupil.nok.address%>" placeholder="<%=pupil.nok.address%>" id="exampleFormControlTextarea1" rows="3" spellcheck="false"></textarea>                                                       
+                                                        </div>
+        
+                                                    </div>
+                                                    <div class="col">
+                                                        <% for (i in contacts) {%>
+                                                            <div class="toast bg-secondary text-white show my-2" aria-live="assertive" aria-atomic="true">
+                                                                <div class="toast-header bg-dark text-premary">
+                                                                    <span class="fab fa-red-cross"></span> <strong class="me-auto ms-2">Emergency Contact</strong> <small>Secondary</small> 
+                                                                </div>
+                                                                <div class="toast-body">
+                                                                    <p><%= contacts[i].c_name %></p> 
+                                                                    <p class=" small"><%= contacts[i].c_relation %></p>
+                                                                <p class="small"><%= contacts[i].c_contact %></p>
+            
+                                                                </div>
+                                                            </div>
+                                                        <% } %>
+                                                    </div>
+                                                </div>
+                                                <a type="button" data-bs-toggle="modal" data-bs-target="#add-card" >
+                                                    <span class="fas fa-plus-circle me-2"></span> Add Contact
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                  
+                                </div>
+            
+            
+            
+            
+            
+                               
+
+
+
+                                
+                                <div class="mt-2">
+                                    <button type="submit" class="btn btn-primary">Save All</button> 
+                                </div>
+                            </form>
+                        </div>
+                       
+                        <div class="card card-body bg-white border-gray-300">
+                                <h2 class="h5 mb-4"> User Account <span class="text-danger">Settings</span></h2>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                                        <div>
+                                            <h3 class="h6 mb-1">Active Program</h3>
+                                            <span class="small">This user is currently involved with one or more active programs 
+                                                <span class="small text-info">
+                                                    <a href="" data-bs-toggle="modal" data-bs-target="#show-activities">More</a>
+                                                </span>
+                                            </span>
+                                        </div>
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" data-bs-toggle="modal" data-bs-target="#lock-confirm" type="checkbox"> 
+                                            <label class="form-check-label" for="flexSwitchCheckNotifi2">
+
+                                            </label>
+                                        </div>
+                                    </li>
+                                    
+                                    <li class="list-group-item d-flex align-items-center justify-content-between rounded-0 ps-0 py-3 border-bottom">
+                                        <div>
+                                            <h3 class="h6 mb-1">Lock User Account</h3>
+                                            <span class="small">This action disables user from accessing the platform.</span>
+                                        </div>
+                                        <div class="form-check form-switch "><input class="form-check-input text-tertiary" type="checkbox" id="flexSwitchCheckNotifi1" checked="checked"> <label class="form-check-label" for="flexSwitchCheckNotifi1"></label></div>
+                                    </li>
+                                   
+                                    <li class="list-group-item d-flex align-items-center justify-content-between ps-0 py-3">
+                                        <div>
+                                            <h3 class="h6 mb-1">User Status</h3>
+                                            <span class="small">This verifies that user is approved by admin</span>
+                                        </div>
+                                        <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="flexSwitchCheckNotifi3" checked="checked"> <label class="form-check-label" for="flexSwitchCheckNotifi3"></label></div>
+                                    </li>
+                                </ul>
+                            </div>
+                    </div>
+            </div>
+            </section>
+
+            <div class="modal fade" id="show-activities" tabindex="-1" role="dialog" aria-labelledby="show-activities" aria-hidden="true">
+                <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                        <div class="modal-body text-center py-3 text-white">
+                            <span class="modal-icon display-1"><span class="fas fa-file"></span></span>
+                            <h3 class="modal-title mb-3">User Active Programs</h3>
+                            <p class="mb-4 lead">All programs user is currently involve with.</p>
+                            
+
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe-europe"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Language:</span>
+                                                    <div class="text-gray mt-2">English, French, German, Romanian</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-fill-drip"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Skills:</span>
+                                                    <div class="text-gray mt-2"><a href="#">UI,</a> <a href="#">UX,</a> <a href="#">Photoshop</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-code-branch"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Technologies:</span>
+                                                    <div class="text-gray mt-2"><a href="#">Angular,</a> <a href="#">VueJs,</a> <a href="#">React,</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-group list-group-transparent list-group-flush list-group-borderless mb-0">
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-birthday-cake"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Birthday:</span>
+                                                    <div class="text-gray mt-2">May 3, 1990</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-briefcase"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Organizations:</span>
+                                                    <div class="text-gray mt-2"><a href="#">Crafty Dwarf LLC,</a> <a href="#">Flow UI LLC</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-globe"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Online:</span>
+                                                    <div class="text-gray mt-2"><a href="#">Themesberg,</a> <a href="#">Dribbble</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-group list-group-transparent list-group-flush border-0 mb-0">
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="far fa-paper-plane"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Email:</span>
+                                                    <div class="text-gray mt-2"><a href="#">support@company.io</a></div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-mobile-alt"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Phone number:</span>
+                                                    <div class="text-gray mt-2">+(123) 456 7890</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item rounded-0 py-4">
+                                            <div class="d-flex">
+                                                <span class="icon icon-sm me-3 d-none d-xl-inline lh-200"><span class="fas fa-map-pin"></span></span>
+                                                <div class="media-body d-block">
+                                                    <span class="h5">Location:</span>
+                                                    <div class="text-gray mt-2">New York, USA</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer z-2 mx-auto text-center pb-5">
+                            <p class="text-white">
+                                We’ll never share your details with third parties.<br class="visible-md" />
+                               
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit/add user info-->
+            
+
+            <div class="modal fade" id="add-info" tabindex="-1" role="dialog" aria-labelledby="add-info" aria-hidden="true">
+                <div class="modal-dialog modal-tertiary modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content section-image overlay-dark" data-background="../../assets/img/pages/subscribe-image.jpg">
+                        <div class="modal-header"><a class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></a></div>
+                        <div class="modal-body text-center py-3 text-white">
+                            <span class="modal-icon display-1"><span class="fas fa-user"></span></span>
+                            <h3 class="modal-title mb-3">Dependant Record</h3>
+                            <p class="mb-4 lead">Edit pupil's personal record</p>
+                            
+                            <nav>
+                                <div class="nav nav-pills nav-fill flex-column flex-sm-row" id="nav-tab-ecommerce" role="tablist">
+                                    <a class="nav-item nav-link me-0 me-sm-4 me-md-3 active" id="nav-credit-card-tab" data-bs-toggle="tab" href="#nav-credit-card" role="tab" aria-controls="nav-credit-card" aria-selected="true">Next of Kin</a>
+                                    <a class="nav-item nav-link me-0 me-sm-4 me-md-3 " id="nav-paypal-tab" data-bs-toggle="tab" href="#nav-paypal" role="tab" aria-controls="nav-paypal" aria-selected="false">Guardian Info </a>
+                                    <a class="nav-item nav-link" id="nav-wire-tab" data-bs-toggle="tab" href="#nav-wire" role="tab" aria-controls="nav-wire" aria-selected="false">Emergency Info</a>
+                                </div>
+                            </nav>
+                            <form action="#" method="post" class="p-3 mb-4">
+                                
+                                
+                                <div class=" p-0 p-md-4">
+                                    <div class="tab-content mt-2" id="nav-tabContent-ecommerce">
+                        
+                                        <div class="tab-pane fade active show" id="nav-credit-card" role="tabpanel" aria-labelledby="nav-credit-card-tab">
+                                           
+                                            <form action="#">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="mb-3"><label for="first_name">First Name</label> <input class="form-control" id="first_name" name="first_name"  type="text" placeholder="Enter first name" required="" /></div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="mb-3"><label for="last_name">Last Name</label> <input class="form-control" id="last_name" ame="last_name"  type="text" placeholder="Also last name" required="" /></div>
+                                                    </div>
+                                                </div>
+                                                <div class="row align-items-center">
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="mb-3"><label for="relation">Relation</label> <input type="text" class="form-control flatpickr-input" id="relation" name="relation"    placeholder="Relationship" /></div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="gender">Gender</label>
+                                                        <select class="form-select" name="gender" id="gender" aria-label="Default select example">
+                                                            <option>Female</option>
+                                                            <option>Male</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="mb-3"><label for="email">Email</label> <input class="form-control" id="email" name="email" type="email" placeholder="name@email.com" /></div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-3">
+                                                        <div class="mb-3"><label for="phone">Phone</label> <input class="form-control" id="phone" name="phone" type="number" placeholder="+234-800 000 0000" /></div>
+                                                    </div>
+                                                </div>
+                                                <h2 class="h5 my-4">Location</h2>
+                                                <div class="row">
+                                                    
+                                                    <div class="col-md-3 mb-3">
+                                                        <div class="mb-3"><label for="number">Number</label> <input class="form-control" id="number" name="number" type="number" placeholder="No." /></div>
+                                                    </div>
+                                                    <div class="col-md-9 mb-3">
+                                                        <div class="mb-3"><label for="address">Address</label> <input class="form-control" id="address" name="address" type="text" placeholder="Enter address" /></div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mt-2"><button type="submit" class="btn btn-primary">Save All</button></div>
+                                            </form>
+
+
+                                            
+                                        </div>
+                                        <div class="tab-pane fade " id="nav-paypal" role="tabpanel" aria-labelledby="nav-paypal-tab">
+                                           
+                                            <div class=" px-4 py-5">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-12">
+                                                        <div class="mb-4">
+                                                            <label for="cartInputName2">Full Name *</label> <input type="text" class="form-control" placeholder="e.g. Christopher Wood" id="cartInputName2" aria-describedby="cartInputName2" required="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="mb-4">
+                                                            <label for="cartInputEmail2">Email address *</label> <input type="email" class="form-control" placeholder="example@company.com" id="cartInputEmail2" aria-describedby="cartInputName2" required="" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 text-center">
+                                                        <button type="submit" class="btn w-100 btn-dropbox"><span class="fab fa-paystack me-2"></span>Check out with Paystack</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                               
+                                                   
+                                              
+                                           
+                                        </div>
+                                        <div class="tab-pane fade" id="nav-wire" role="tabpanel" aria-labelledby="nav-wire-tab">
+                                            
+                                            <div class="py-5 px-4">
+                                                <div class="row justify-content-center">
+                                                    <div class="row">
+                                                        <div class="col-md-4 text-center py-3">
+                                                            <h6>Access Bank Plc</h6>
+                                                            <div class="d-flex">
+                                                                <label for="">Acc. No: </label>
+                                                                <p class="px-2">07xxxxxxx</p>
+        
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <label for="">Name: </label>
+                                                                <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 text-center py-3">
+                                                            <h6>Zenith Bank Plc</h6>
+                                                            <div class="d-flex">
+                                                                <label for="">Acc. No: </label>
+                                                                <p class="px-2"> 10xxxxxxx</p>
+        
+                                                            </div>
+                                                            <div class="d-flex">
+                                                                <label for="">Name: </label>
+                                                                <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 text-center py-3">
+                                                            <h6>Jaiz Bank Plc</h6>
+                                                            <div class="d-flex">
+                                                                <label for="">Acc. No: </label>
+                                                                <p class="px-2" >84xxxxxxx</p>
+        
+                                                            </div>
+                                                            <div class="d-flex ">
+                                                                <label for="">Name: </label>
+                                                                <p class="px-2"> Al-IlmIslamic Foundation</p>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                </div>         
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                           
+                        </div>
+                        <div class="modal-footer z-2 mx-auto text-center pb-5">
+                            <p class="text-white">
+                                We’ll never share your details with third parties.<br class="visible-md" />
+                               
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Contact for user Account -->
+            <div class="modal fade" id="add-card" tabindex="-1" aria-labelledby="add-card" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-primary text-white modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">Add a contact card <button type="button" class="btn-close bg-gray-500" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                        <form action="/admin/pupil/contact/add/<%=pupil._id%>" method="post">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 mb-3">
+                                        <div class="mb-3"><label for="c_name">Name</label> 
+                                        <input class="form-control" id="city" name="c_name" type="text" placeholder="e.g. Amina Smith" /></div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 mb-3">
+                                        <div class="mb-3"><label for="c_relation">Relationship</label> 
+                                        <input class="form-control"  id="country" name="c_relation" type="text" placeholder="e.g. Brother" /></div>
+            
+                                    </div>
+                                    
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="col-sm-12 col-md-12">
+                                            <div class="mb-3"><label for="c_contact">Contact</label> 
+                                            <input class="form-control"  id="zip" name="c_contact" type="tel" placeholder="Email or Phone" /></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="mb-4">
+                                            <label class="my-1 me-2" for="cartFormCustomSelectPref1">Type</label>
+                                            <select name="c_type" class="form-select my-1 me-sm-2" id="cartFormCustomSelectPref1">
+                                                <option selected="selected">Choose...</option>
+                                                <option value="Primary Number">Primary Number</option>
+                                                <option value="Secondary Number">Secondary Number</option>
+                                                <option value="Emergency Contact">Emergency</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-sm my-2 btn-outline-success text-center text-white">Save</button>
+            
+                                </div>
+                            </div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- show more of user info -->
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

@@ -1,0 +1,161 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main>
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header pb-5 pb-sm-7 bg-primary text-white">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10 text-center">
+                            <h1 class="display-3 mb-4 px-lg-5"><%=blog.title%></h1>
+                            <div class="post-meta"><span class="fw-bold me-3"><%=blog.author%></span> <span class="post-date me-3"><%=blog.formattedDate%></span> <span class="fw-bold"><%=blog.e_readTime%> Min</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="section section-sm bg-white pt-5 pt-lg-6 text-black">
+                <article class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <p>Adding a dark mode is basically adding a theme. The principles are the same for adding a light mode to a dark website or alternative styling based on user-defined variables, the time of year or holidays.</p>
+                            <p>I added theming with a mix of and CSS. In this post I’ll go step by step into the details of how I did it and what I learned.</p>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias expedita earum modi sint voluptatum nemo assumenda explicabo laboriosam unde excepturi, necessitatibus consequatur quo! Quis impedit excepturi ut,
+                                alias omnis harum?
+                            </p>
+                            <p><img class="rounded" src="../../assets/img/blog/image-2.jpg" alt="Themesberg office" /></p>
+                           
+                            
+                        </div>
+                    </div>
+                    <div class="row justify-content-sm-center align-items-center py-3 mt-3">
+                        <div class="col-12 col-lg-8">
+                            <div class="row">
+                                <div class="col-9 col-md-6">
+                                    <h6 class="fw-bolder d-inline mb-0 me-3">Share:</h6>
+                                    <button class="btn btn-sm me-2 btn-icon-only btn-pill btn-twitter d-inline text-white" aria-label="twitter social link"><span class="fab fa-twitter"></span></button>
+                                    <button class="btn btn-sm me-2 btn-icon-only btn-pill btn-facebook d-inline" aria-label="facebook social link"><span class="fab fa-facebook-f"></span></button>
+                                    <button class="btn btn-sm btn-icon-only btn-pill bg-orange d-inline text-white" aria-label="reddit social link"><span class="fab fa-reddit-alien"></span></button>
+                                </div>
+                                <div class="col-3 col-md-6 text-right">
+                                    <span
+                                        class="far fa-bookmark text-primary"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title=""
+                                        data-original-title="Bookmark story"
+                                        data-bs-original-title="Bookmark story"
+                                        aria-label="Bookmark story"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <div class="section section-md bg-white text-black pt-0 line-bottom-light">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-8">
+                            <div>
+                                
+                                <label class="h5 mb-4" for="exampleFormControlTextarea1"><span class="badge badge-md bg-primary text-uppercase me-2"><%blog.comments%></span> Comments</label>
+                                <form action="/blogs/comment/<%=blog._id%>" method="post">
+                                
+                                <div class="row mb-3">
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating ">
+                                              <input name="name" type="text" class="form-control" value="" id="floatingInput" placeholder="Name" required> 
+                                                <label for="floatingInput">Name</label>
+                                            </div>
+                                          </div>
+                                          <div class="col-12 col-md-6">
+                                              <div class="form-floating ">
+                                                  <input name="email" type="email" class="form-control" value="" id="floatingInput" placeholder="Email" required> 
+                                                    <label for="floatingInput">Email</label>
+                                                </div>
+                                        </div>
+                                      </div>
+                                      <textarea name="text" required class="form-control border border-gray-300-gray" id="exampleFormControlTextarea1" placeholder="Add your comment" rows="6" data-bind-characters-target="#charactersRemaining" maxlength="1000"></textarea>
+                                      <div class="d-flex justify-content-between mt-3">
+                                          <small class="fw-light text-dark"><span id="charactersRemaining">1000</span> characters remaining</small> 
+                                          <button type="submit" class="btn btn-primary animate-up-2">Send</button>
+                                      </div>
+                                    </form>
+                            </div>
+
+                                <div class="mt-5">
+                                    <%for ( i in comments) {%>
+                                        <div class="card bg-gray-200 border-gray-300 rounded p-4 mb-4">
+                                            <div class="d-flex justify-content-between mb-4">
+                                                <span class="font-small">
+                                                    <a href="#"><img class="avatar-sm img-fluid rounded-circle me-2" src="../../assets/img/team/profile-picture-3.jpg" alt="James avatar" /> <span class="fw-bold"><%=comments[i].name%></span> </a>
+                                                    <span class="ms-2">2 min ago</span>
+                                                </span>
+                                                
+                                            </div>
+                                            <p class="m-0"><%=comments[i].text%></p>
+                                            <div class="mt-4 mb-3 d-flex justify-content-between">
+                                                <div>
+                                                    <span
+                                                        class="far fa-thumbs-up text-action text-success me-3"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title=""
+                                                        data-original-title="Like comment"
+                                                        data-bs-original-title="Like comment"
+                                                        aria-label="Like comment"
+                                                    ></span>
+                                                    <span
+                                                        class="far fa-thumbs-down text-action text-danger me-3"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title=""
+                                                        data-original-title="Dislike comment"
+                                                        data-bs-original-title="Dislike comment"
+                                                        aria-label="Dislike comment"
+                                                    ></span>
+                                                    <span class="font-small fw-light"><%comments[i].likes%> likes</span>
+                                                </div>
+                                                <!-- <a class="text-action fw-light font-small" data-bs-toggle="collapse" role="button" href="#replyContainer3" aria-expanded="false" aria-controls="replyContainer3">
+                                                    <span class="fas fa-reply me-2"></span> Reply
+                                                </a> -->
+                                            </div>
+                                            <div class="collapse" id="replyContainer3">
+                                                <label class="mb-4 d-none" for="exampleFormControlTextarea12">Replay</label>
+                                                <textarea class="form-control border" id="exampleFormControlTextarea12" placeholder="Reply to John Doe" rows="6" data-bind-characters-target="#charactersRemainingReply3" maxlength="1000"></textarea>
+                                                <div class="d-flex justify-content-between mt-3">
+                                                    <small class="fw-light"><span id="charactersRemainingReply3">1000</span> characters remaining</small> <button class="btn btn-primary btn-sm animate-up-2">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% } %>
+                                   
+                                    <div class="mt-5 text-center">
+                                        <button id="loadOnClick" class="btn btn-primary btn-loading-overlay me-2 mb-2">
+                                            <span class="spinner"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> </span><span class="ms-1 btn-inner-text">Load more comments</span>
+                                        </button>
+                                        <p id="allLoadedText" style="display: none;">That's all, Sparky!</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

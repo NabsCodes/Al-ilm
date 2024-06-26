@@ -1,0 +1,200 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-10 col-md-8">
+                        <div class="card">
+                            <form action="/admin/programs/create-prg" method="post">
+                                <div class="card-body">
+                                    <h3 class="card-title">Create Program</h3>
+                                    <p class="card-description">Search all programs.</p>
+                                    <div class="row mb-5">
+                                        <div class="col-12 col-md-6">
+                                          <div class="form-floating mb-3">
+                                            <input name="title" type="text" class="form-control" id="floatingInput" placeholder="e.g. Food Drive"> 
+                                              <label for="floatingInput">Title</label>
+                                          </div>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div class="form-floating">
+                                            <div class="mb-3">
+                                                <!-- <label for="formFile" class="form-label">Statement</label>  -->
+                                                <input name="file" class="form-control" type="file" id="formFile"></div>
+                                        </div>
+                                      </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="mb-3"><label for="exampleFormControlTextarea1">Describe the Program</label> 
+                                            <textarea name="description" class="form-control" placeholder="Enter your description..." id="exampleFormControlTextarea1" rows="8"></textarea>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="form-floating mt-3 mb-3">
+                                                <input type="text" name="goal" class="form-control" id="floatingInput" placeholder="e.g. 500,000"> 
+                                                  <label for="floatingInput">Target Goal</label>
+                                              </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="mb-3"><span class="h6 fw-bold">Type of Program</span></div>
+    
+                                            <div class="row">
+                                                <div class="col-lg-4 col-sm-12">
+                                                    <div class="form-check">
+                                                        <input name="type" class="form-check-input" type="checkbox" value="" id="defaultCheck1" checked="checked" /> 
+                                                        <label class="form-check-label" for="defaultCheck1">Project</label>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-lg-4 col-sm-12">
+                                                    <div class="form-check">
+                                                        
+                                                        <input  name="type"class="form-check-input"  type="checkbox" value="on" id="defaultCheck2" />
+                                                         <label class="form-check-label" for="defaultCheck2">Fund Raise  </label>
+                                                        </div>
+                                                </div>
+                                                <div class="col-lg-4 col-sm-12">
+                                                    <div class="form-check">
+                                                        <input name="type" class="form-check-input" type="checkbox" value="" id="defaultCheck2" />
+                                                         <label class="form-check-label" for="defaultCheck2">Volunteer</label>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            
+                                            
+                                    </div>
+                                       
+                                    <div class="row my-4">
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                            <label class="h6" for="exampleInputDate3">Enable Direct Donations</label>
+                                            <div class="form-check form-switch">
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Allow Donations</label>
+                                                <input name="isDonation" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  /> 
+                                            </div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <div class="form-group">
+                                            <label class="h6" for="exampleInputDate3">Status</label>
+                                            <div class="form-check form-switch">
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Activate</label>
+                                                <input  name="status" class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  /> 
+                                            </div>
+                                            </div>
+    
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group mb-2">
+                                                <label class="h6" for="exampleInputDate3">Target Date</label>
+                                              <div class="input-group input-group-border">
+                                                <span class="input-group-text" id="basic-addonDate3">
+                                                  <span class="fas far fa-calendar-alt">
+                                                    </span>
+                                                </span>
+                                                <input name="targetDate" class="form-control datepicker-input" data-datepicker="" id="exampleInputDate3" placeholder="End date" type="text">
+                                              </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                    <div class="row my-2">
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="form-floating mt-3 mb-3">
+                                                <div class="mb-3"><label for="exampleFormControlTextarea1">Mission</label> 
+                                                    <textarea name="mission" class="form-control" placeholder="What is the Mission for this program..." id="exampleFormControlTextarea1" rows="4"></textarea>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="col-lg-6 col-sm-12">
+                                            <div class="form-floating mt-3 mb-3">
+                                                <div class="mb-3"><label for="exampleFormControlTextarea1">Objectives</label> 
+                                                    <textarea name="objectives" class="form-control" placeholder="What are the objectives for this program..." id="exampleFormControlTextarea1" rows="4"></textarea>
+                                                </div>
+                                              </div>
+                                        </div>
+                                            
+                                            
+                                    </div>
+                                    <div class="row text-center my-4">
+                                        <button type="submit" class="btn btn-outline-primary text-center">Save</button>
+                                    </div>
+                                    
+                                    
+                            </form>
+                            
+                            <div class="row">
+                                <h3 class="card-title">Other Controls</h3>
+
+                                    <div class="col-md-12 col-lg-12 align-items-center text-center justify-content-between">
+                                        <nav>
+                                            <div class="nav nav-tabs mb-4" id="nav-tab" role="tablist">
+                                                <a class="nav-item nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Active Volunteers</a>
+                                                <a class="nav-item nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Assign Volunteers</a>
+                                                <a class="nav-item nav-link" id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Options</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                                <p>
+                                                    <span> This is the active volunteers to this program</span>
+                                                    Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa
+                                                    eiusmod Pinterest in do umami readymade swag.
+                                                </p>
+                                                <p>Day handsome addition horrible sensible goodness two contempt. Evening for married his account removal. Estimable me disposing of be moonlight cordially curiosity.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                <p>
+                                                    <span> This is the all approved volunteers the could be assigned to this program</span>
+
+                                                    Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa
+                                                    eiusmod Pinterest in do umami readymade swag.
+                                                </p>
+                                                <p>Day handsome addition horrible sensible goodness two contempt. Evening for married his account removal. Estimable me disposing of be moonlight cordially curiosity.</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                                <p>
+                                                    <span> This is reserved for any other info. needed to include.</span>
+
+                                                    Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa
+                                                    eiusmod Pinterest in do umami readymade swag.
+                                                </p>
+                                                <p>Day handsome addition horrible sensible goodness two contempt. Evening for married his account removal. Estimable me disposing of be moonlight cordially curiosity.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                    </div>
+                    
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>

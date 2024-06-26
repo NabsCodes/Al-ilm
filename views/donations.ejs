@@ -1,0 +1,104 @@
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+        <main class="bg-primary">
+            <div class="preloader bg-dark flex-column justify-content-center align-items-center">
+                <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 64 78.4">
+                    <path fill="#fff" d="M10,0h1.2V11.2H0V10A10,10,0,0,1,10,0Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40" y="17.6" width="0" height="25.6" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="23" y="35.2" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,35.2H64V53.8a7,7,0,0,1-7,7H52.8V35.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="52.8" width="0" height="25.6" />
+                    <path fill="#fff" d="M52.8,0H57a7,7,0,0,1,7,7h0v4.2H52.8V0Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="11.2" x="57.8" y="17.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="6" y="35.2" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" stroke-width="11.2" x="40.2" y="49.6" width="0" height="11.2" />
+                    <path fill="#fff" d="M17.6,67.2H28.8v1.2a10,10,0,0,1-10,10H17.6V67.2Z" />
+                    <rect fill="none" stroke="#fff" stroke-opacity="0.4" stroke-width="28.8" x="31.6" width="0" height="11.2" />
+                    <rect fill="none" stroke="#fff" x="14" stroke-width="28.8" y="17.6" width="0" height="11.2" />
+                </svg>
+            </div>
+            <section class="section-header bg-gray-200 pb-4 pb-sm-5 pb-lg-6">
+                <div class="row pt-0 mx-3 mt-2">
+                    <div class="col-md-2">
+                        <%- include('partials/admin-sidebar') %>
+                    </div>
+                    <div class="col-lg-8 col-md-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">Donations Board</h3>
+                                <p class="card-description">Search all donations records.</p>
+                                <div class="table-responsive">
+                                <table id="dataTableExample" class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Amount</th>
+                                        <th>Type</th>
+                                     </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for (i in donations) {%>
+                                            <tr>
+                                                <td>
+                                                    <%=donations[i].formattedDate%>
+                                                </td>
+                                                <td>
+                                                    <%=donations[i].d_name%>
+                                                    
+                                                </td>
+                                                <td>
+                                                    <%=donations[i].d_email%>
+
+                                                </td>
+                                                <td>
+                                                    <%=donations[i].formattedAmount%>
+
+                                                </td>
+                                                <td>                                                    
+                                                    <%if (donations[i].programId) {%>
+                                                        <%=donations[i].programId%>
+                                                    <% } else {%>
+                                                        General Donations
+                                                    <% } %>
+                                                </td>
+                                            
+                                            </tr>
+                                        
+                                        <% } %>
+
+                                    
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                            </div>
+                    
+                    </div>
+                    <div class="col-lg-2 col-md-2 mt-4 mt-sm-0">
+                        <ul class="list-group list-group-flush rounded border border-gray-300 shadow">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="down" title="" data-bs-original-title="Unspecified Donations">Donations</a> <span class="badge bg-primary badge-pill"><%= donations.length%></span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                <a href="#" data-bs-toggle="tooltip" data-bs-placement="down" title="" data-bs-original-title="Project Donations">Programs</a> <span class="badge bg-secondary badge-pill"><%= programsDonations.length%></span></li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-0">
+                                <!-- <a href="#" data-bs-toggle="tooltip" data-bs-placement="down" title="" data-bs-original-title="Program Donations">Program</a> <span class="badge bg-tertiary badge-pill">1</span></li> -->
+                        </ul>
+
+                        <div class="mt-5"><h3 class="h6">Recent Donations</h3></div>
+                        <ul class="list-group list-group-flush rounded border border-gray-300 shadow pb-2 px-2">
+                            <% for (i in recentDonations) {%>
+                            <li class="list-group-item border-0"><span class="text-primary"><%=recentDonations[i].formattedDate%>, </span>
+                                <a ><%=recentDonations[i].formattedAmount%></a> 
+                                <h4><%=recentDonations[i].d_name%></h4>
+                            </li>
+                            <% } %>
+                            
+                        </ul>
+                    </div> 
+            </div>
+            </section>
+        </main>
+        <%- include('partials/footer') %>
+        <%- include('partials/end') %>
